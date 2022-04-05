@@ -365,13 +365,22 @@ const Home = (props)=>{
     });
 };
 async function getStaticProps() {
-    const res = await fetch("https://restcountries.com/v3.1/all");
-    const countries = await res.json();
-    return {
-        props: {
-            countries
-        }
-    };
+    try {
+        const res = await fetch("https://restcountries.com/v3.1/all");
+        const countries = await res.json();
+        if (!res) return {
+            notFound: true
+        };
+        return {
+            props: {
+                countries
+            }
+        };
+    } catch (e) {
+        return {
+            notFound: true
+        };
+    }
 }
 /* harmony default export */ const countries = (Home);
 
@@ -521,7 +530,7 @@ module.exports = require("react/jsx-runtime");
 var __webpack_require__ = require("../webpack-runtime.js");
 __webpack_require__.C(exports);
 var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-var __webpack_exports__ = __webpack_require__.X(0, [895,664,79], () => (__webpack_exec__(5362)));
+var __webpack_exports__ = __webpack_require__.X(0, [895,664,914,885], () => (__webpack_exec__(5362)));
 module.exports = __webpack_exports__;
 
 })();

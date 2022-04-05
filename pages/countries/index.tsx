@@ -64,11 +64,19 @@ const Home: NextPage<HomePageProps> = (props) => {
 }
 
 export async function getStaticProps() {
+  try {
   const res = await fetch('https://restcountries.com/v3.1/all');
   const countries : CountryData[] = await res.json();
+  if(!res)
+  return { notFound: true };
+
   return {
     props: {
       countries
     }
-  }}
+  }
+} catch (e) {
+  return { notFound: true };
+}
+}
 export default Home
