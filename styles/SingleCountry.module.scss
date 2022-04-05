@@ -47,6 +47,7 @@
   position: relative;
   box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
   transition: box-shadow 0.25s cubic-bezier(0.32, 0.01, 0, 1);
+  height: fit-content;
   img {
     object-fit: cover;
   }
@@ -101,6 +102,9 @@
     }
     @media #{$desktop} {
       padding-top: 0;
+      padding-left: 2em;
+    }
+    @media #{$desktop-md} {
       padding-left: 3em;
     }
     .CountryName {
@@ -109,6 +113,9 @@
       font-size: 4rem;
       }
       @media #{$desktop} {
+        font-size: 3.8rem;
+        }
+      @media #{$desktop-md} {
         font-size: 4.4rem;
         margin-top: -.25em;
         }
@@ -136,17 +143,23 @@
     grid-template-columns: repeat(2,1fr);
     grid-gap: 1em;
     }
+    @media #{$only-desktop} {
+      grid-gap: .5em;
+    }
+    @media #{$desktop-md} {
+      grid-gap: 1em;
+    }
 
     strong {
       color: #000428;
       font-size: 1.8rem;
-      @media #{$desktop} {
+      @media #{$desktop-md} {
       font-size: 2.2rem;
       }
     }
     p {
       font-size: 1.6rem;
-      @media #{$desktop} {
+      @media #{$desktop-md} {
       font-size: 1.8rem;
       }
     }
@@ -161,7 +174,7 @@
     h2 {
       font-size: 3rem;
       padding: .35em 0;
-      @media #{$desktop} {
+      @media #{$desktop-md} {
       padding: .75em 0;
       font-size: 3.6rem;
       }

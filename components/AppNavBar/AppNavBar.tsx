@@ -11,7 +11,7 @@ const AppNavBar : React.FC = props => {
   return (
     <div className={styles.AppNavBar}>
       <div className={styles.AppNavBarInner}>
-        <Link href="/">
+        <Link href="/countries">
           <a className={styles.AppNavBarLogoLink}><IconLogo /></a>
         </Link>
         <div className={styles.input}>

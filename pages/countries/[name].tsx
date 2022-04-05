@@ -14,6 +14,7 @@ import { ReactNode } from "react";
 
 type CountryPageProps = {
   country: CountryData,
+  borders: CountryData[],
   children?: ReactNode
 }
 const Country: NextPage<CountryPageProps> = (props) => {
@@ -63,7 +64,7 @@ const Country: NextPage<CountryPageProps> = (props) => {
                 <p><strong>Time Zone: </strong>{props.country.timezones}</p>                
                 {props.country.tld && <p><strong>Top Level Domain: </strong>
                   {props.country.tld.map((tld, id) =>
-                  <span>{tld}</span>
+                  <span key={id}>{tld}</span>
                    )}
                 </p>}
               </div>
@@ -109,21 +110,28 @@ export async function getStaticPaths() {
     const res = await fetch(`https://restcountries.com/v3.1/name/${params?.name}?fields=flag,flags,name,nativeName,population,region,subregion,capital,tld,currencies,languages,borders,timezones`);
     const country : CountryData = (await res.json())[0];
     let query = [];    
-    for (const neighbor of country.borders!) {
+    if(country.borders.length > 0){
+      for (const neighbor of country.borders!) {
         query.push(neighbor)
     }
     const resN = await fetch("https://restcountries.com/v3.1/alpha/?codes=" + query.join(","))
-    const data = await resN.json()
+    const bordersData : CountryData[]= await resN.json()
     let neighbors = [];
-    if (data.length > 0) {
-        for (let neighbor of data) {
+    if (bordersData.length > 0) {
+        for (let neighbor of bordersData) {
             neighbors.push({ parent: params?.code, cca2: neighbor.cca2, name: {official: neighbor.name.official} })
         }
-    }     
+    }   
     return {
       props: {
         country,
-        borders: data
+        borders: bordersData
+      }
+    }
+    }
+    return {
+      props: {
+        country,
       }
     }
   }

@@ -17,7 +17,7 @@ const PageHeader : React.FC<PageHeaderProps> = props => {
       <div className={styles.filterCountries__container}>
 
         <div className={styles.filterCountries}>
-          <h3>Filter country by following category</h3>
+          <h3>Filter country by Region:</h3>
           <div className={styles.categoryTags}>
           {REGIONS.map((region, i) => (
             <a className={styles.filterLocationButtons}
