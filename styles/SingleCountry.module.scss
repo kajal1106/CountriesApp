@@ -2,75 +2,105 @@
 @import "../components/AppNavBar/AppNavBar.module.scss";
 
 @keyframes PageCountrySingleBackdropEnter {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
+
 @keyframes PageCountrySingleEnter {
-  from { transform: translateX(100%) }
-  to { transform: translateX(0) }
+  from {
+    transform: translateX(100%)
+  }
+
+  to {
+    transform: translateX(0)
+  }
 }
+
 @keyframes PageCountrySingleExit {
-  from { transform: translateX(0) }
-  to { transform: translateX(100%) }
+  from {
+    transform: translateX(0)
+  }
+
+  to {
+    transform: translateX(100%)
+  }
 }
 
 .PageCountrySingle {
   position: relative;
-  height: 100vh;
+  // height: 100vh;
   width: 100%;
-  // overflow: hidden;
+  overflow: hidden;
   animation: PageCountrySingleBackdropEnter .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+  padding-top: 2em;
+  margin-top: 2em;
   .container {
-    height: inherit;
-    padding: 2em;
+    // height: 100vh;
+    padding: 1.5em;
     display: flex;
     flex-direction: column;
-    padding-top: 4em;
-      margin-top: 2em;
-      background-color: color('white');
-  box-shadow: 0 1em 3em color('dark',.2);
+   
+    background-color: color('white');
+    @media #{$tablet} {
+      padding: 2em;
+    }
   }
 }
 
 .PageCountrySingleInfo {
   padding-bottom: 1em;
-    @media #{$tablet} {
+
+  @media #{$tablet} {
     padding-bottom: 2em;
-    }
+  }
+
   background-color: color('white');
+
   @media #{$desktop} {
     display: flex;
   }
+
   .CountryCardFlag {
     flex: 1;
     overflow: hidden;
-  position: relative;
-  box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
-  transition: box-shadow 0.25s cubic-bezier(0.32, 0.01, 0, 1);
-  height: fit-content;
-  img {
-    object-fit: cover;
-  }
+    position: relative;
+    box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
+    transition: box-shadow 0.25s cubic-bezier(0.32, 0.01, 0, 1);
+    height: fit-content;
+
+    img {
+      object-fit: cover;
+      height: fit-content;
+    }
 
   }
+
   .SingleCountryContent {
     flex: 1.5;
   }
 }
 
 .BackButton {
-  margin-bottom: 2em;
+  margin-bottom: 1em;
+  @media #{$tablet} {
+    margin-bottom: 2em;
+  }
 }
-  
-  .BackButtonLink {
-    text-decoration: none;
-    appearance: none;
+
+.BackButtonLink {
+  text-decoration: none;
+  appearance: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: .5em 1em;
   // background-color: color('white');
-  border: 2px solid color('white',0.4);
+  border: 2px solid color('white', 0.4);
   background-image: linear-gradient(129.6deg, #000428 3.34%, #3D51FF 114.07%);
 
   color: color('white');
@@ -79,126 +109,156 @@
   font-size: 2rem;
   min-width: 7em;
   transition: box-shadow 0.25s cubic-bezier(0.32, 0.01, 0, 1);
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1),0 1px 2px 0 rgba(0,0,0,0.06);
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
 
   &.disabled,
   &[disabled] {
     opacity: .5;
     pointer-events: none;
   }
+
   &:hover {
     opacity: .8;
     filter: brightness(1.1);
   }
+
   svg {
     margin-right: .5em;
   }
-  }
+}
 
-  .SingleCountryContent {
-    padding-top: 1em;
-    @media #{$tablet} {
+.SingleCountryContent {
+  padding-top: 1em;
+
+  @media #{$tablet} {
     padding-top: 2em;
-    }
-    @media #{$desktop} {
-      padding-top: 0;
-      padding-left: 2em;
-    }
-    @media #{$desktop-md} {
-      padding-left: 3em;
-    }
-    .CountryName {
-      font-size: 2.8rem;
-      @media #{$tablet} {
-      font-size: 4rem;
-      }
-      @media #{$desktop} {
-        font-size: 3.8rem;
-        }
-      @media #{$desktop-md} {
-        font-size: 4.4rem;
-        margin-top: -.25em;
-        }
-    }
-    header {
-      padding-bottom: .3em;
-      display: flex;
-      @media #{$tablet} {
-        padding-bottom: 1em;
-      }
-      h1 {
-        margin-right: .18em;
-        @media #{$desktop} {
-        width: 6em;
-        }
-      }
-    }
   }
 
-  .CountryDetails {
-    display: grid;
-    grid-template-columns: repeat(1,1fr);
-    grid-gap: .5em;
+  @media #{$desktop} {
+    padding-top: 0;
+    padding-left: 2em;
+  }
+
+  @media #{$desktop-md} {
+    padding-left: 3em;
+  }
+
+  .CountryName {
+    font-size: 2.8rem;
+
     @media #{$tablet} {
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 1em;
+      font-size: 4rem;
     }
-    @media #{$only-desktop} {
-      grid-gap: .5em;
+
+    @media #{$desktop} {
+      font-size: 3.8rem;
     }
+
     @media #{$desktop-md} {
-      grid-gap: 1em;
+      font-size: 4.4rem;
+      margin-top: -.25em;
+    }
+  }
+
+  header {
+    padding-bottom: .3em;
+    display: flex;
+
+    @media #{$tablet} {
+      padding-bottom: 1em;
     }
 
-    strong {
-      color: #000428;
-      font-size: 1.8rem;
+    h1 {
+      margin-right: .18em;
+
+      @media #{$desktop} {
+        width: 6em;
+      }
+
       @media #{$desktop-md} {
+        width: 8em;
+      }
+    }
+  }
+}
+
+.CountryDetails {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-gap: .5em;
+
+  @media #{$tablet} {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1em;
+  }
+
+  @media #{$only-desktop} {
+    grid-gap: .5em;
+  }
+
+  @media #{$desktop-md} {
+    grid-gap: 1em;
+  }
+
+  strong {
+    color: #000428;
+    font-size: 1.8rem;
+
+    @media #{$desktop-md} {
       font-size: 2.2rem;
-      }
-    }
-    p {
-      font-size: 1.6rem;
-      @media #{$desktop-md} {
-      font-size: 1.8rem;
-      }
-    }
-    span {
-      margin-right: .38em;
     }
   }
-  .BorderCountries {
-    display: flex;
-    flex-direction: column;
 
-    h2 {
-      font-size: 3rem;
-      padding: .35em 0;
-      @media #{$desktop-md} {
-      padding: .75em 0;
+  p {
+    font-size: 1.6rem;
+
+    @media #{$desktop-md} {
+      font-size: 1.8rem;
+    }
+  }
+
+  span {
+    margin-right: .38em;
+  }
+}
+
+.BorderCountries {
+  display: flex;
+  flex-direction: column;
+
+  h2 {
+    font-size: 3rem;
+    padding: .35em 0;
+
+    @media #{$desktop-md} {
       font-size: 3.6rem;
-      }
     }
   }
-  .BorderCountriesList {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    list-style: none;
+}
+
+.BorderCountriesList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+
+  >li {
+    flex: 0 0 10%;
+    margin-right: .5em;
+  }
+
+  header {
     display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    >li {
-      flex: 0 0 10%;
-      margin-right: .5em;
-    }
-    header {
-      display: flex;
-      h3 {
-        margin-right: .18em;
-      }
+
+    h3 {
+      margin-right: .18em;
     }
   }
-  .borderCountryLink {
-    text-decoration: none;
-  }
+}
+
+.borderCountryLink {
+  text-decoration: none;
+}

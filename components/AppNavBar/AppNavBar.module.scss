@@ -6,7 +6,7 @@
   // height: 6em;
 }
 .AppNavBarInner {
-  padding: 0 1.2em;
+  padding: 0 .5em;
   box-sizing: border-box;
   position: fixed;
   top: 0;
@@ -22,12 +22,14 @@
   padding-top: env(safe-area-inset-top);
   backdrop-filter: blur(2em);
   box-shadow: 0 1em 3em rgb(0 0 0 / 6%);
+  @media #{$tablet} {
+    padding: 0 1.2em;
+  }
 }
 .AppNavBarLogoLink {
   display: block;
   color: inherit;
   padding-top: .5em;
-  padding-left: .5em;
   align-self: center;
   text-decoration: none;
   svg {
@@ -36,6 +38,9 @@
   }
   h1 {
     font-weight: 400;
+  }
+  @media #{$tablet} {
+    padding-left: .5em;
   }
 }
 .input {

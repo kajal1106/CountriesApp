@@ -120,6 +120,10 @@
   width: fit-content;
   margin-bottom: .3em;
   line-height: 1.09;
+  .ie & {
+    color: color('dark');
+    background: transparent;
+  }
 }
 .CountryRegionTag {
   position: absolute;

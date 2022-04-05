@@ -19,13 +19,13 @@ const PageHeader : React.FC<PageHeaderProps> = props => {
         <div className={styles.filterCountries}>
           <h3>Filter country by Region:</h3>
           <div className={styles.categoryTags}>
-          {REGIONS.map((region, i) => (
-            <a className={styles.filterLocationButtons}
-              key={`region-${i}`}
-              onClick={() => props.filterRegion!(region)}
-              >
-              {region}
-              </a>
+            {REGIONS.map((region, i) => (
+              <a className={styles.filterLocationButtons}
+                key={`region-${i}`}
+                onClick={() => props.filterRegion!(region)}
+                >
+                {region}
+                </a>
             ))}          
           </div>
         </div>

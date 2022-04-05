@@ -2,11 +2,8 @@ import { GetStaticProps, NextPage } from "next";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import AppNavBar from "../../components/AppNavBar/AppNavBar";
-import GlobalNoScroll from "../../components/GlobalNoScroll/GlobalNoScroll";
-import IconClose from "../../components/Icon/IconBack";
 import styles from '../../styles/SingleCountry.module.scss';
 import cardStyles from "../../components/CountryCard/CountryCard.module.scss";
-import genericStyle from "../../styles/Home.module.scss";
 import IconBack from "../../components/Icon/IconBack";
 import { addCommaToNumber } from "../../utils/addCommaToNumbers.utils";
 import { CountryData } from "../../types/base.types";
@@ -41,7 +38,7 @@ const Country: NextPage<CountryPageProps> = (props) => {
           </div>
           <div className={`${[styles.PageCountrySingleInfo]} ${[styles.AnimateEntry]}`}>
             <div className={styles.CountryCardFlag} >
-              <img src={props.country.flags.svg} alt={props.country.name.common} />
+              <img src={props.country.flags.svg} alt={props.country.name.common} /> 
               <span className={cardStyles.CountryRegionTag}>{props.country.region}</span>
             </div>
             <div className={`${[styles.SingleCountryContent]} ${[styles.AnimateEntry]}`}>
@@ -78,20 +75,8 @@ const Country: NextPage<CountryPageProps> = (props) => {
           {props.borders &&
           <div className={`${[styles.BorderCountries]} ${[styles.AnimateEntry]}`}>
             <h2>Border Countries</h2>
-            <ul className={`${[styles.BorderCountriesList]} ${[styles.AnimateEntry]}`}>
-              {props.borders.map((borderCountry : CountryData, idx:any) =>
-                <li key={idx}>
-                  <a href={'/countries'+ borderCountry.name.common} className={styles.borderCountryLink}>
-
-                    <h2>{borderCountry.flag}</h2>
-                    <p className={`${[cardStyles.CountryName]} ${[styles.CountryName]}`}>{borderCountry.name.common}</p>
-                  </a>
-                </li>
-              )}
-            </ul>
-          </div>
-          }
-          <GoogleMap centerCountryData={{name: props.country.name.common, latlng: props.country.latlng!, flagUri: props.country.flags.svg}} googleMapsData={googleMapsData}/>
+            <GoogleMap centerCountryData={{name: props.country.name.common, latlng: props.country.latlng!, flagUri: props.country.flags.svg}} googleMapsData={googleMapsData}/>
+          </div>}
         </div>
       </div>
     )
