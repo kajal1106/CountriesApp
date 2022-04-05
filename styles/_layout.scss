@@ -1,0 +1,87 @@
+.grid {
+  display: grid;
+  grid-gap: var(--gap);
+  min-width: 0;
+  width: 100%;
+  grid-template-columns: repeat(1,minmax(0, 1fr));
+  .no-grid & {
+    display: flex;
+    flex-wrap: wrap;
+    > * {
+      flex: 0 0 25%;
+      width: 25%;
+      max-width: 25%;
+      border: 2px solid color(background);
+    }
+  }
+  @media #{$tablet} {
+    grid-template-columns: repeat(3,minmax(0, 1fr));
+  }
+  @media #{$desktop-md} {
+    grid-template-columns: repeat(4,minmax(0, 1fr));
+  }
+}
+@for $i from 1 through 6 {
+  .grid-span-#{$i} {
+    @if ($i > 1) {
+      grid-column-end: span 2;
+      .no-grid & {
+        flex: 0 0 100%;
+        width: 100%;
+        max-width: 100%;
+      }
+    }
+  }
+  .grid-phone-span-#{$i} {
+    @media #{$only-phone} {
+      @if ($i > 1) {
+        grid-column-end: span 2;
+        .no-grid & {
+          flex: 0 0 100%;
+          width: 100%;
+          max-width: 100%;
+        }
+      }
+    }
+  }
+  .grid-tablet-span-#{$i} {
+    @media #{$only-tablet} {
+      grid-column-end: span $i;
+      .no-grid & {
+        flex: 0 0 100 / 6 * $i * 1%;
+        width: 100 / 6 * $i * 1%;
+        max-width: 100 / 6 * $i * 1%;
+      }
+    }
+  }
+  .grid-span-#{$i} {
+    @media #{$desktop} {
+      grid-column-end: span $i;
+      .no-grid & {
+        flex: 0 0 100 / 6 * $i * 1%;
+        width: 100 / 6 * $i * 1%;
+        max-width: 100 / 6 * $i * 1%;
+      }
+    }
+  }
+}
+%widthLimiter {
+  width: 100%;
+  max-width: 100%;
+  min-width: 100%;
+}
+.container {
+  max-width: getBreakpoint(xl,md);
+  @media #{$desktop-xl} {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+.pageSection {
+  @extend %widthLimiter;
+  &:first-of-type {
+    position: relative;
+  }
+}

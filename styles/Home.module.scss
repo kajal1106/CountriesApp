@@ -1,0 +1,87 @@
+@import "index";
+
+.PageCountryIndex {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overflow: hidden;
+  justify-content: center;
+  padding-top: 3em;
+  margin-top: 3em;
+}
+
+.PageCountryIndexContent {
+  padding:  2.5em;
+  grid-gap: 2.5em;
+  display: grid;
+  grid-template-columns: repeat(1,1fr);
+  @media #{$only-phone} {
+    padding-top: 0.5em;
+  }
+  @media #{$tablet} {
+    grid-template-columns: repeat(2,1fr);
+  }
+  @media #{$desktop} {
+    grid-gap: 2em;
+    grid-template-columns: repeat(3,1fr);
+  }
+  @media #{$desktop-md} {
+    grid-gap: 2.5em;
+    grid-template-columns: repeat(4,1fr);
+  }
+
+}
+.PageBackdropLayer {
+  top: 0;
+}
+
+.loading {
+  --clock-width: 3em;
+  --clock-radius: calc(var(--clock-width) / 2);
+  --clock-minute-length: calc(var(--clock-width) * 0.4);
+  --clock-hour-length: calc(var(--clock-width) * 0.2);
+  --clock-thickness: 0.1rem;
+
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: var(--clock-width);
+  height: var(--clock-width);
+  border: 2px solid color('white');
+  border-radius: 50%;
+  margin: auto;
+  margin-top: -9em;
+
+  &::before,
+  &::after {
+    position: absolute;
+    content: "";
+    top: calc(var(--clock-radius) * 0.25);
+    width: var(--clock-thickness);
+    background: color('white');
+    border-radius: 10px;
+    transform-origin: center calc(100% - calc(var(--clock-thickness) / 2));
+    animation: spin infinite linear;
+  }
+
+  &::before {
+    height: var(--clock-minute-length);
+    animation-duration: 2s;
+  }
+
+  &::after {
+    top: calc(var(--clock-radius) * 0.25 + var(--clock-hour-length));
+    height: var(--clock-hour-length);
+    animation-duration: 15s;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(1turn);
+  }
+}

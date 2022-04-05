@@ -1,0 +1,75 @@
+@import "../../styles/index";
+
+.AppNavBar {
+  position: relative;
+  width: 100%;
+  // height: 6em;
+}
+.AppNavBarInner {
+  padding: 0 1.2em;
+  box-sizing: border-box;
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: auto;
+  width: 100%;
+  background-color: #000428;
+  // background-image: linear-gradient(180deg, #121538 -12.5%, rgba(0, 4, 40, 0) 100%);
+  color: color('white');
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: env(safe-area-inset-top);
+  backdrop-filter: blur(2em);
+  box-shadow: 0 1em 3em rgb(0 0 0 / 6%);
+}
+.AppNavBarLogoLink {
+  display: block;
+  color: inherit;
+  padding-top: .5em;
+  padding-left: .5em;
+  align-self: center;
+  text-decoration: none;
+  svg {
+    width: 3.5em;
+    height: 3.5em;
+  }
+  h1 {
+    font-weight: 400;
+  }
+}
+.input {
+  display: flex;
+  box-shadow: 0 1em 3em rgb(0 0 0 / 6%);
+  border-radius: 5px;
+  overflow: hidden;
+  background-color: color('white');
+  // width: 100%;
+  align-items: center;
+
+  input {
+    flex: 9;
+    font-size: 1.4rem;
+    border: none;
+    outline: none;
+    padding: 0.5rem 1rem;
+    box-sizing: border-box;
+    .mouse & {
+      &:hover {
+        border-bottom-style: solid;
+      }
+    }
+    &:focus {
+      outline: none;
+    }
+    &::placeholder {
+      font-weight: 400;
+      color: color('dark',0.5);
+      font-size: 1.2rem;
+    }
+  }
+  svg {
+    color: color('dark');
+    padding-right: .5em;
+  }
+}

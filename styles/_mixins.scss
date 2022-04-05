@@ -1,0 +1,20 @@
+@mixin clampLines($numberOfLines: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $numberOfLines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.AnimateEntry {
+  animation: pageContentBlockEntry .6s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+@keyframes pageContentBlockEntry {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

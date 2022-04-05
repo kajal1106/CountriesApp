@@ -1,0 +1,201 @@
+@import "../../styles/index";
+
+.PageHeader {
+  position: relative;
+  padding: 0 3em;
+  padding-top: 1.5em;
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & > * {
+      // height: 48px;
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+    }
+  
+
+    @media screen and (max-width: 675px) {
+      flex-direction: column;
+      align-items: flex-start;
+      .input {
+        max-width: none;
+        margin-bottom: 2rem;
+      }
+    }
+  }
+  
+  .drop_down {
+    position: relative;
+    filter: none !important;
+    width: 100%;
+    max-width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: none;
+    outline: none;
+    background-image: linear-gradient(216deg, hsla(33, 0%, 100%, 0.62), hsla(33, 0%, 100%, 1));
+    box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
+    position: relative;
+    z-index: 2;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    // height: 3em;
+    cursor: pointer;
+    font-size: 1.4rem;
+    .title {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+    }
+    .drop_down_menu {
+      position: absolute;
+      background-image: linear-gradient(216deg, hsla(33, 0%, 100%, 0.72), hsla(33, 0%, 100%, 1));
+      box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
+      top: 100%;
+      left: 0em;
+      right: 0;
+      width: 100%;
+      z-index: -1;
+      transform: translateY(-20px);
+      user-select: none;
+      pointer-events: none;
+      opacity: 0;
+      max-height: 0;
+      margin: 0;
+      margin: 0;
+      list-style: none;
+      padding: 0 !important;
+  
+      .option {
+        padding: .75em;
+        border-bottom: 1px solid color('dark',0.5);
+        // border-radius: inherit;
+        text-align: left;
+        &:hover {
+          background-color: color('red',0.5);
+          color: color(white) !important;
+        }
+        &.remove {
+          background-color: color('red');
+          color: #fff;
+          &:hover {
+            filter: brightness(1.1);
+          }
+        }
+        &:last-child {
+          border: none;
+        }
+      }
+    }
+  
+    &:focus-within .drop_down_menu {
+      transform: none;
+      user-select: auto;
+      pointer-events: visible;
+      padding: 0.5rem 1rem;
+      opacity: 1;
+      max-height: none;
+    }
+    svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.filterCountries__container {
+
+  @media #{$tablet} {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 2.6rem;
+    margin-bottom: .75em;
+    color: color('white');
+
+    @media #{$tablet} {
+      text-align: start;
+    }
+  }
+
+  .categoryTags {
+    @media #{$only-phone} {
+      justify-content: center;
+    }
+
+    a {
+      cursor: pointer;
+    }
+  }
+
+  .filterCountries {
+    @media #{$only-phone} {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.sortSelect {
+  user-select: none;
+  position: relative;
+  min-width: 8em;
+
+  select {
+    display: block;
+    padding-right: 2em;
+    appearance: none;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px 24px;
+    color: color('dark', .75);
+    background-color: color('white');
+    border: 2px solid rgba(23, 28, 41, 0.3);
+    border-radius: 100px;
+  }
+
+  svg {
+    position: absolute;
+    right: 1.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 2rem;
+    pointer-events: none;
+  }
+}
+.categoryTags {
+  display: flex;
+  flex-flow: wrap;
+  white-space: nowrap;
+  @media #{$desktop} {
+  >* {
+    +* {
+      margin-left: 1rem;
+    }
+  }
+}
+  a {
+    background-color: color('white',.25);
+    color: color('white');
+    border-radius: 100px;
+    padding: 8px 24px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
+    text-transform: uppercase;
+            user-select: none;
+    display: inline-block;
+    z-index: 11;
+    margin: .25rem;
+  }
+}

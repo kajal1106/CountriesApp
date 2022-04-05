@@ -1,0 +1,21 @@
+import type { NextPage } from 'next'
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import styles from '../styles/Home.module.scss'
+
+const Home: NextPage = (props) => {
+  const router = useRouter();
+
+	if (typeof window !== "undefined") {
+		router.push("/countries");
+	}
+  return (
+    <div>
+      <Head>
+        <title>Countries App</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+    </div>
+  )
+}
+export default Home

@@ -1,3 +1,11 @@
-# https://www.robotstxt.org/robotstxt.html
+# Block all crawlers for / and /api
 User-agent: *
-Disallow:
+Disallow: /
+
+User-agent: *
+Disallow: /api
+
+# Allow all crawlers
+User-agent: *
+Allow: /countries
+Allow: /countries/*
