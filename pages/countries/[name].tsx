@@ -6,7 +6,7 @@ import styles from '../../styles/SingleCountry.module.scss';
 import cardStyles from "../../components/CountryCard/CountryCard.module.scss";
 import IconBack from "../../components/Icon/IconBack";
 import { addCommaToNumber } from "../../utils/addCommaToNumbers.utils";
-import { CountryData } from "../../types/base.types";
+import { CountryData, googleMapsDataType } from "../../types/base.types";
 import { ReactNode } from "react";
 import GoogleMap from "../../components/GoogleMaps/GoogleMap";
 
