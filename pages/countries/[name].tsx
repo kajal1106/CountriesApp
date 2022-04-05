@@ -11,6 +11,7 @@ import IconBack from "../../components/Icon/IconBack";
 import { addCommaToNumber } from "../../utils/addCommaToNumbers.utils";
 import { CountryData } from "../../types/base.types";
 import { ReactNode } from "react";
+import GoogleMap from "../../components/GoogleMaps/GoogleMap";
 
 type CountryPageProps = {
   country: CountryData,
@@ -22,6 +23,10 @@ const Country: NextPage<CountryPageProps> = (props) => {
     window.history.back();
   }
   const router = useRouter();
+  const googleMapsData : googleMapsDataType[] = [];
+  props.borders.map((borderCountry : CountryData, index) => {
+    googleMapsData.push({name : borderCountry.name.common, latlng : borderCountry.latlng!, flagUri : borderCountry.flags.svg});
+  })
     console.log(props);
     return (       
       <div className={`${[styles.PageCountrySingle]} ${[styles.AnimateEntry]}`}>
@@ -86,6 +91,7 @@ const Country: NextPage<CountryPageProps> = (props) => {
             </ul>
           </div>
           }
+          <GoogleMap centerCountryData={{name: props.country.name.common, latlng: props.country.latlng!, flagUri: props.country.flags.svg}} googleMapsData={googleMapsData}/>
         </div>
       </div>
     )
@@ -107,10 +113,10 @@ export async function getStaticPaths() {
 }
 
   export const getStaticProps : GetStaticProps = async ({ params }) => {
-    const res = await fetch(`https://restcountries.com/v3.1/name/${params?.name}?fields=flag,flags,name,nativeName,population,region,subregion,capital,tld,currencies,languages,borders,timezones`);
+    const res = await fetch(`https://restcountries.com/v3.1/name/${params?.name}?fields=flag,flags,name,nativeName,latlng,population,region,subregion,capital,tld,currencies,languages,borders,timezones`);
     const country : CountryData = (await res.json())[0];
     let query = [];    
-    if(country.borders.length > 0){
+    if(country.borders!.length > 0){
       for (const neighbor of country.borders!) {
         query.push(neighbor)
     }

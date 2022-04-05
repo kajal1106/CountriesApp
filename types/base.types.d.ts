@@ -35,3 +35,9 @@ export type Currency = {
   name: string,
   symbol: string
 }
+
+export type googleMapsDataType = {
+  name: string; 
+  latlng: number[]; 
+  flagUri: string; 
+}

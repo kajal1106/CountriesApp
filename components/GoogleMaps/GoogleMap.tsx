@@ -1,0 +1,70 @@
+import { Component, createRef } from "react"
+import { googleMapsDataType } from "../../types/base.types";
+
+
+type MyProps = {
+    // using `interface` is also ok
+    googleMapsData?: googleMapsDataType[],
+    centerCountryData: googleMapsDataType
+  };
+  type MyState = {
+    count: number; // like this
+  };
+class GoogleMap extends Component<MyProps> {
+    googleMapRef = createRef();
+    googleMap: any;
+    borderCountriesData = this.props.googleMapsData;
+    currentCountryData = this.props.centerCountryData;
+    componentDidMount() {
+        const googleMapScript = document.createElement('script')
+        googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDAq8ZMvJx0ChDxTD63pq67knmq3qd7cWg`
+        window.document.body.appendChild(googleMapScript)
+    
+        googleMapScript.addEventListener('load', ()=>{
+            this.googleMap = this.createGoogleMap()
+            this.InitMap()
+        })
+    }
+
+    InitMap = () => {
+        console.log(this.props);
+
+        this.borderCountriesData!.map((mapData : googleMapsDataType) => {
+            let newMarker = new window.google.maps.Marker({
+                position: { lat: mapData.latlng[0], lng: mapData.latlng[1] },
+                map: this.googleMap,
+              });
+            let InfoWindow = new window.google.maps.InfoWindow({
+                content: mapData.name,
+            });
+            newMarker.addListener("click", () => {
+                let selectedInfoWindow = InfoWindow;
+                selectedInfoWindow.open(this.googleMap, newMarker);
+              });
+        })
+    }
+    createGoogleMap = () => {
+      return(
+        new window.google.maps.Map(this.googleMapRef.current, {
+          zoom: 3,
+          center: {
+            lat: this.currentCountryData.latlng[0]!,
+            lng: this.currentCountryData.latlng[1]!,
+          }
+        })
+      )
+    }
+
+    render() {
+      return (
+        <div
+          id="google-map"
+          ref={this.googleMapRef as React.RefObject<HTMLDivElement>}
+          style={{ width: '400px', height: '300px' }}
+        />
+      )
+    }
+  }
+  
+  export default GoogleMap
+  
