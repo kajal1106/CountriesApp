@@ -5,33 +5,34 @@
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [Features](#features)
-    - [Screenshot](#screenshot)
     - [Links](#links)
-  - [My process](#my-process)
     - [Built with](#built-with)
   - [Author](#author)
 
 ## Overview
+ This web app is built in NextJs integrated with the REST Countries API to pull country data and display it.
 
 ### Features
 
 Users should be able to:
 
 - See all countries from the API on the homepage
-- Search for a country using an `input` field
+- Search for a country using an `input` field in the Nabbar
 - Filter  the list of countries by region tag
 - Sort the countries by population and Area
 - Click on a country to see more detailed information on a separate page
 - See the border countries in google map on a single country page
+- Hover on location marker to view the border country and click to know the details
+- Fully responsive on desktop/tablet/mobile
+- Cypress end to end Testing
+- Perfoemed SEO 
 
-### Screenshot
-
-![Countries](./idea/countries.jpg)
 
 ### Links
 
-- Solution URL: [Click Here]()
-- Live Site URL: [Click Here]()
+- Solution URL: [Click Here](https://github.com/kajal1106/CountriesApp)
+- Live Site URL: [Click Here](https://countries-app-dun.vercel.app/countries)
+- Code Sandbox URL: [Click Here](https://codesandbox.io/s/countries-app-zmq6jp)
 
 ## My process
 
@@ -42,11 +43,12 @@ Users should be able to:
 - CSS Grid
 - animation and transitions
 - SVG
+- Google Map Javascript API to show the map
 - 
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
+- [Cypress.io](https://www.cypress.io/) - Cypress Testing
 
 ## Author
 
-- Website - 
-- LinkedIn - 
+- LinkedIn - [Kajal Singh](https://www.linkedin.com/in/singhkajal/)
