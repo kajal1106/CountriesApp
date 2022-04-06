@@ -165,7 +165,7 @@ const CountryCard = (props)=>{
                                         })
                                     ]
                                 }),
-                                props.country.capital && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                props.country.capital.length > 0 && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("strong", {
                                             children: "Capital: "
@@ -174,12 +174,12 @@ const CountryCard = (props)=>{
                                         props.country.capital
                                     ]
                                 }),
-                                props.country.population && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("strong", {
                                             children: "Population: "
                                         }),
-                                        (0,addCommaToNumbers_utils/* addCommaToNumber */.E)(props.country.population)
+                                        props.country.population && (0,addCommaToNumbers_utils/* addCommaToNumber */.E)(props.country.population)
                                     ]
                                 }),
                                 props.country.area && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {

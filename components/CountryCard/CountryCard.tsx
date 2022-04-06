@@ -28,8 +28,8 @@ const CountryCard : React.FC<CountryCardProps> = props => {
                 {props.country.name.common && <h2 data-cy={props.country.name.common} className={styles.CountryName}>{props.country.name.common}</h2>}     
                 {props.country.flag && <span>{props.country.flag}</span>}
               </div>
-              {props.country.capital && <p><strong>Capital: </strong> {props.country.capital}</p>}
-              {props.country.population && <p><strong>Population: </strong>{addCommaToNumber(props.country.population)}</p>}
+              {props.country.capital.length > 0 && <p><strong>Capital: </strong> {props.country.capital}</p>}
+              <p><strong>Population: </strong>{props.country.population && addCommaToNumber(props.country.population)}</p>
               {props.country.area && <p><strong>Area: </strong>{props.country.area}</p>}
             </div>
           </div>
