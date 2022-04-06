@@ -7,6 +7,7 @@
     - [Features](#features)
     - [Links](#links)
     - [Built with](#built-with)
+    - [Installation guide](#installation-guide)
   - [Author](#author)
 
 ## Overview
@@ -47,6 +48,21 @@ Users should be able to:
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [Cypress.io](https://www.cypress.io/) - Cypress Testing
+
+###Installation Guide
+## Testing
+
+The app uses Cypress for integration testing.
+
+## Available NPM scripts
+
+```
+npm run cypress
+```
+Opens Cypress integrated testing environment.<br />
+(Shortcut for `npx cypress open`)
+> Please see `/cypress/README.md` for notes regarding Cypress integration tests.
+
 
 ## Author
 
