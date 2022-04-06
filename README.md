@@ -2,7 +2,6 @@
 
 ## Table of contents
 
-- [Frontend Mentor - REST Countries API with color theme switcher solution](#frontend-mentor---rest-countries-api-with-color-theme-switcher-solution)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [Features](#features)
