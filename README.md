@@ -44,7 +44,6 @@ Users should be able to:
 - animation and transitions
 - SVG
 - Google Map Javascript API to show the map
-- 
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [Cypress.io](https://www.cypress.io/) - Cypress Testing
