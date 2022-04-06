@@ -26,7 +26,7 @@ Users should be able to:
 - Hover on location marker to view the border country and click to know the details
 - Fully responsive on desktop/tablet/mobile
 - Cypress end to end Testing
-- Perfoemed SEO 
+- Added SEO - Referred SEO Documentation from the NextJs [Docs](https://nextjs.org/learn/seo/introduction-to-seo)
 
 
 ### Links
