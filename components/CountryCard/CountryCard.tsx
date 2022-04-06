@@ -1,20 +1,19 @@
 
 import Link from 'next/link';
 import React from 'react';
+import { CountryData } from '../../types/base.types';
 import { addCommaToNumber } from '../../utils/addCommaToNumbers.utils';
 
 import styles from './CountryCard.module.scss';
 type CountryCardProps = {
-  country: any;
+  country: CountryData;
 }
 
-const CountryCard : React.FC<CountryCardProps> = props => {
-  console.log(props.country);
-  
+const CountryCard : React.FC<CountryCardProps> = props => {  
   return (
-    <div className={styles.CountryCard}>
-      <Link as={`/countries/${props.country.name.common}`} href={`/countries/${props.country.name.common}`}>
-        <a href={`/countries/${props.country.name.common}`}>
+    <div className={styles.CountryCard} data-country={props.country.name.common}>
+      <Link as={`/countries/${props.country.cca2!.toLowerCase()}`} href={`/countries/${props.country.cca2!.toLowerCase()}`}>
+        <a href={`/countries/${props.country.cca2!.toLowerCase()}`}>
       
           <div className={styles.CountryCardInner}>
             <header>
@@ -22,30 +21,19 @@ const CountryCard : React.FC<CountryCardProps> = props => {
                 <img src={props.country.flags.svg} alt={props.country.name.common} />
                 <span className={styles.CountryRegionTag}>{props.country.region}</span>
               </div>
-              {/* <div className={styles.CountryCardFlag}>
-            <Image
-              src={props.country.flags.svg}
-              alt={props.country.name.common}
-              width={400}
-              height={300}
-            />
-            <span className={styles.CountryRegionTag}>{props.country.region}</span>
-
-          </div> */}
             </header>
             
             <div className={styles.CountryCardInfo}>
               <div className={styles.CountryCardInfoHeading}>
-                <h2 className={styles.CountryName}>{props.country.name.common}</h2>     
-                <span>{props.country.flag}</span>
+                {props.country.name.common && <h2 data-cy={props.country.name.common} className={styles.CountryName}>{props.country.name.common}</h2>}     
+                {props.country.flag && <span>{props.country.flag}</span>}
               </div>
-              <p><strong>Capital: </strong> {props.country.capital}</p>
-              <p><strong>Population: </strong>{addCommaToNumber(props.country.population)}</p>
-              <p><strong>Time Zone: </strong>{props.country.timezones[0]}</p>
-              {/* <iframe src={props.country.maps[0]} ></iframe> */}
+              {props.country.capital && <p><strong>Capital: </strong> {props.country.capital}</p>}
+              {props.country.population && <p><strong>Population: </strong>{addCommaToNumber(props.country.population)}</p>}
+              {props.country.area && <p><strong>Area: </strong>{props.country.area}</p>}
             </div>
           </div>
-        
+
         </a>
       </Link>
     </div>

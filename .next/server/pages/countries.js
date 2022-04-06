@@ -106,6 +106,7 @@ __webpack_require__.d(__webpack_exports__, {
 var jsx_runtime_ = __webpack_require__(997);
 // EXTERNAL MODULE: external "react"
 var external_react_ = __webpack_require__(6689);
+var external_react_default = /*#__PURE__*/__webpack_require__.n(external_react_);
 // EXTERNAL MODULE: ./components/AppNavBar/AppNavBar.tsx + 2 modules
 var AppNavBar = __webpack_require__(8914);
 // EXTERNAL MODULE: ./node_modules/next/link.js
@@ -122,14 +123,14 @@ var CountryCard_module_default = /*#__PURE__*/__webpack_require__.n(CountryCard_
 
 
 const CountryCard = (props)=>{
-    console.log(props.country);
     return /*#__PURE__*/ jsx_runtime_.jsx("div", {
         className: (CountryCard_module_default()).CountryCard,
+        "data-country": props.country.name.common,
         children: /*#__PURE__*/ jsx_runtime_.jsx(next_link["default"], {
-            as: `/countries/${props.country.name.common}`,
-            href: `/countries/${props.country.name.common}`,
+            as: `/countries/${props.country.cca2.toLowerCase()}`,
+            href: `/countries/${props.country.cca2.toLowerCase()}`,
             children: /*#__PURE__*/ jsx_runtime_.jsx("a", {
-                href: `/countries/${props.country.name.common}`,
+                href: `/countries/${props.country.cca2.toLowerCase()}`,
                 children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                     className: (CountryCard_module_default()).CountryCardInner,
                     children: [
@@ -154,16 +155,17 @@ const CountryCard = (props)=>{
                                 /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                                     className: (CountryCard_module_default()).CountryCardInfoHeading,
                                     children: [
-                                        /*#__PURE__*/ jsx_runtime_.jsx("h2", {
+                                        props.country.name.common && /*#__PURE__*/ jsx_runtime_.jsx("h2", {
+                                            "data-cy": props.country.name.common,
                                             className: (CountryCard_module_default()).CountryName,
                                             children: props.country.name.common
                                         }),
-                                        /*#__PURE__*/ jsx_runtime_.jsx("span", {
+                                        props.country.flag && /*#__PURE__*/ jsx_runtime_.jsx("span", {
                                             children: props.country.flag
                                         })
                                     ]
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                props.country.capital && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("strong", {
                                             children: "Capital: "
@@ -172,7 +174,7 @@ const CountryCard = (props)=>{
                                         props.country.capital
                                     ]
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                props.country.population && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("strong", {
                                             children: "Population: "
@@ -180,12 +182,12 @@ const CountryCard = (props)=>{
                                         (0,addCommaToNumbers_utils/* addCommaToNumber */.E)(props.country.population)
                                     ]
                                 }),
-                                /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
+                                props.country.area && /*#__PURE__*/ (0,jsx_runtime_.jsxs)("p", {
                                     children: [
                                         /*#__PURE__*/ jsx_runtime_.jsx("strong", {
-                                            children: "Time Zone: "
+                                            children: "Area: "
                                         }),
-                                        props.country.timezones[0]
+                                        props.country.area
                                     ]
                                 })
                             ]
@@ -231,6 +233,7 @@ const PageHeader = (props)=>{
                         /*#__PURE__*/ jsx_runtime_.jsx("div", {
                             className: (PageHeader_module_default()).categoryTags,
                             children: REGIONS.map((region, i)=>/*#__PURE__*/ jsx_runtime_.jsx("a", {
+                                    "data-cy-region": region,
                                     className: (PageHeader_module_default()).filterLocationButtons,
                                     onClick: ()=>props.filterRegion(region)
                                     ,
@@ -245,18 +248,28 @@ const PageHeader = (props)=>{
                     children: [
                         /*#__PURE__*/ (0,jsx_runtime_.jsxs)("select", {
                             is: "sort-booking",
+                            onChange: (e)=>props.sortCountries(e)
+                            ,
                             children: [
                                 /*#__PURE__*/ jsx_runtime_.jsx("option", {
                                     value: "A",
                                     children: "Sort:"
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx("option", {
-                                    value: "Discount",
-                                    children: "Population"
+                                    value: "PopulationAsc",
+                                    children: "Population: Low to High"
                                 }),
                                 /*#__PURE__*/ jsx_runtime_.jsx("option", {
-                                    value: "PriceDes",
-                                    children: "Area"
+                                    value: "PopulationDesc",
+                                    children: "Population: High to Low"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("option", {
+                                    value: "AreaAsc",
+                                    children: "Area: Low to High"
+                                }),
+                                /*#__PURE__*/ jsx_runtime_.jsx("option", {
+                                    value: "AreaDesc",
+                                    children: "Area: High to Low"
                                 })
                             ]
                         }),
@@ -291,17 +304,18 @@ var Home_module_default = /*#__PURE__*/__webpack_require__.n(Home_module);
 
 
 
+
 const Home = (props)=>{
     const { 0: filteredCountries1 , 1: setFilteredCountries  } = (0,external_react_.useState)(props.countries);
     const { 0: regionValue , 1: setRegionValue  } = (0,external_react_.useState)("");
     const { 0: isLoading , 1: setLoading  } = (0,external_react_.useState)(true);
+    const { 0: sortFilter , 1: setSortFilter  } = (0,external_react_.useState)("");
     (0,external_react_.useEffect)(()=>{
         setTimeout(()=>{
             setLoading(false);
-        }, 2500);
+        }, 1000);
     }, []);
     const filterBasedOnRegion = (value)=>{
-        // const value = event.target.value;
         setRegionValue(value);
         if (value === "") {
             setFilteredCountries(props.countries);
@@ -311,14 +325,40 @@ const Home = (props)=>{
             setFilteredCountries(filteredCountries);
         }
     };
-    const InputOnChange = (value)=>{
-        if (value === "") {
+    const InputOnChange = (e)=>{
+        if (e.currentTarget.value === "") {
             setFilteredCountries(props.countries);
         } else {
-            console.log(value);
-            const filteredCountries = props.countries.filter((country)=>country.name.common.toLowerCase().includes(value)
+            const filteredCountries = props.countries.filter((country)=>country.name.common.toLowerCase().includes(e.currentTarget.value)
             );
             setFilteredCountries(filteredCountries);
+        }
+    };
+    const sortCountries = (e)=>{
+        const sortFilterOption = e.currentTarget.value;
+        setSortFilter(sortFilterOption);
+        if (sortFilterOption === "PopulationAsc") {
+            const sortedData = props.countries.sort((a, b)=>{
+                return a.population - b.population;
+            });
+            setFilteredCountries(sortedData);
+        }
+        if (sortFilterOption === "PopulationDesc") {
+            const sortedData = props.countries.sort((a, b)=>{
+                return b.population - a.population;
+            });
+            console.log(sortedData);
+            setFilteredCountries(sortedData);
+        }
+        if (sortFilterOption === "AreaAsc") {
+            const sortedData = props.countries.sort((a, b)=>a.area - b.area
+            );
+            setFilteredCountries(sortedData);
+        }
+        if (sortFilterOption === "AreaDesc") {
+            const sortedData = props.countries.sort((a, b)=>b.area - a.area
+            );
+            setFilteredCountries(sortedData);
         }
     };
     return /*#__PURE__*/ jsx_runtime_.jsx("main", {
@@ -331,7 +371,10 @@ const Home = (props)=>{
             children: /*#__PURE__*/ (0,jsx_runtime_.jsxs)("div", {
                 className: (Home_module_default()).container,
                 children: [
-                    /*#__PURE__*/ jsx_runtime_.jsx(AppNavBar/* default */.Z, {}),
+                    /*#__PURE__*/ jsx_runtime_.jsx(AppNavBar/* default */.Z, {
+                        InputOnChange: InputOnChange,
+                        isHomePage: true
+                    }),
                     isLoading && /*#__PURE__*/ jsx_runtime_.jsx("div", {
                         className: (Home_module_default()).loading,
                         children: /*#__PURE__*/ jsx_runtime_.jsx("div", {})
@@ -339,8 +382,8 @@ const Home = (props)=>{
                     !isLoading && /*#__PURE__*/ (0,jsx_runtime_.jsxs)(jsx_runtime_.Fragment, {
                         children: [
                             /*#__PURE__*/ jsx_runtime_.jsx(PageHeader_PageHeader, {
-                                filterByInput: InputOnChange,
-                                filterRegion: filterBasedOnRegion
+                                filterRegion: filterBasedOnRegion,
+                                sortCountries: sortCountries
                             }),
                             /*#__PURE__*/ jsx_runtime_.jsx("div", {
                                 className: `${[
@@ -350,11 +393,11 @@ const Home = (props)=>{
                                 ]} ${[
                                     (Home_module_default()).AnimateEntry
                                 ]}`,
-                                children: filteredCountries1.map((country, index)=>/*#__PURE__*/ jsx_runtime_.jsx(jsx_runtime_.Fragment, {
+                                children: filteredCountries1.map((country, index)=>/*#__PURE__*/ jsx_runtime_.jsx((external_react_default()).Fragment, {
                                         children: /*#__PURE__*/ jsx_runtime_.jsx(CountryCard_CountryCard, {
                                             country: country
                                         }, index)
-                                    })
+                                    }, index)
                                 )
                             })
                         ]
@@ -366,7 +409,7 @@ const Home = (props)=>{
 };
 async function getStaticProps() {
     try {
-        const res = await fetch("https://restcountries.com/v3.1/all");
+        const res = await fetch("https://restcountries.com/v3.1/all?fields=flag,flags,cca2,name,nativeName,population,region,capital,area");
         const countries = await res.json();
         if (!res) return {
             notFound: true

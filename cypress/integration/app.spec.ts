@@ -1,55 +1,41 @@
 context('Data Table Functionality', () => {
-	beforeEach(() => {
-		cy.visit("http://localhost:3000");
-    waitForFetchingData();
-	});
 
-  const waitForFetchingData = () => {
-    cy.log('Waiting for the data to be fetched from the backend Server');
-    cy.intercept('getData').as('getData');
-    cy.wait('@getData');
-  };
-
-  it('Data Fetched from the API Successfully', () => {
-    cy.log('Assert that Data Table does not have data-error attribute to confirm Data has been fetched successfully!');
-		cy.get("div.PageIndex").should('not.attr', 'data-error', 'true');  
+  it.skip('Redirect to /countries route if / is the path', () => {
+    cy.visit(Cypress.env('baseUrl'));
+    cy.url().should('include','/countries');
   });
 
-  it('Check if Data Table has rows', () => {
-    cy.log('Assert if Data Table has data samples for the data to be visualized!');
-    cy.get(".DataTable").find("tr[data-sample-name]").its('length').should('be.gte', 2)
+  it.skip('Must have data-country Cards after the rendering', () => {
+    cy.visit(Cypress.env('baseUrl'));
+    cy.get('[data-country]').should('have.length.gt',200);
   });
 
-  it('Check if Sorting works by Metric Name', () => {
-    const original : any= [];
-    const sorted : any = [];
-    cy.log('Obtaining all metric names inside an array');
-    cy.get('td.MetricColumn').each(sample => {original.push(sample.text())});
-    cy.get('th.SortMetric').click();
-    cy.log('Obtaining all metric names after sorting button has been clicked');
-    cy.get('td.MetricColumn').each(sample => {sorted.push(sample.text())}).then(() => {
-      const sortedTest = original.sort((a : any, b : any) => {
-        if (a.toUpperCase() < b.toUpperCase()) {
-          return -1;
-        }
-        return 1;
-      });
-      cy.log('Assert that sorted array programatically and from the UI is same');
-      expect(sorted).to.eql(sortedTest);
+  it.skip('Must have the country name in the URL after Country Card is clicked', () => {
+    cy.visit('http://localhost:3000/countries');
+    cy.get('[data-country]').first().find('h2[data-cy]').then((sample) => {
+      cy.log('Country Name' , sample.text());
+      cy.get('[data-country]').first().click();
+      cy.wait(2000);
+      cy.url().should('include', "countries/"+sample.text())
     });
-  });
-
-  it('Check if Graph is empty at the start', () => {
-    cy.log('Assert that Graph does have data-empty-graph attribute to confirm Graph is empty!');
-    cy.get("div.GraphChart").should('have.attr', 'data-empty-graph', 'true');  
 
   });
 
-  it('Check if Graph Populates after selecting metric', () => {
-    cy.get("div.GraphChart").should('have.attr', 'data-empty-graph', 'true');  
-    cy.log('Click on the input for the Metric to confirm if it\'s visible on the Graph');
-    cy.get('.DataTable').find("tr[data-sample-name]").first().find('input').check();
-    cy.get("div.GraphChart").should('not.attr', 'data-empty-graph', 'true');  
-
+  it('Test if Region Filters the country data', () => {
+    cy.visit('http://localhost:3000/countries');
+    const originalData : any = [];
+    const filteredData : any = [];
+    cy.get('[data-country]').each(sample => {
+      const countryText = Cypress.$(sample).attr('data-cy]');
+      originalData.push(countryText);
+    });
+    cy.get('a[data-cy-region]').first().click();
+    cy.get('[data-country]').each(sample => {
+      const countryText = Cypress.$(sample).attr('data-cy]');
+      filteredData.push(countryText);
+    }).then(() => {
+        expect(filteredData).to.not.eql(originalData);
+    });
+    cy.log(originalData);
   });
 });

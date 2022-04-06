@@ -14,6 +14,7 @@ const Home: NextPage = (props) => {
       <Head>
         <title>Countries App</title>
         <link rel="icon" href="/favicon.ico" />
+        <meta name="robots" content="all" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" />
       </Head>

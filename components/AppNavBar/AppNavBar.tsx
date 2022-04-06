@@ -6,8 +6,11 @@ import IconSearch from '../Icon/IconSearch';
 
 import styles from './AppNavBar.module.scss';
 
-
-const AppNavBar : React.FC = props => {
+type AppNavBarProps = {
+  InputOnChange?: (arg0 : React.ChangeEvent<HTMLInputElement>) => void,
+  isHomePage?: boolean
+}
+const AppNavBar : React.FC<AppNavBarProps> = props => {
   return (
     <div className={styles.AppNavBar}>
       <div className={styles.AppNavBarInner}>
@@ -16,14 +19,16 @@ const AppNavBar : React.FC = props => {
         </Link>
         <div className={styles.input}>
          
-          <input
+          {props.isHomePage && <><input
             id="search-country"
             type="text"
-            // onChange={(e) => props.filterByInput!(e.target.value)}
+            onChange={(e) => props?.InputOnChange!(e)}
             placeholder="Search for a country..."
             // onKeyPress={(e) => e.key === "Enter" && searchCountries()}
           />
-            <IconSearch />
+          
+            <IconSearch /></>
+          }
         </div>
       </div>
     </div>

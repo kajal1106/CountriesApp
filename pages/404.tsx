@@ -2,7 +2,7 @@ import Link from "next/link";
 import AppNavBar from "../components/AppNavBar/AppNavBar";
 import styles from "../styles/404.module.scss";
 
-const ErrorPage = (props) => {
+const ErrorPage = () => {
   return (
     <div
       className=

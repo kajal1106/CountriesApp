@@ -6,9 +6,6 @@ const nextConfig = {
     domains: ['flagcdn.com', 'upload.wikimedia.org'],
     // formats: ['webp', 'png', 'jpg', 'svg'],
   },
-  typescript: {
-    ignoreBuildErrors: true,
-  }
 }
 
 module.exports = nextConfig

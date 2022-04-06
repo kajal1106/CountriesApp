@@ -1,4 +1,5 @@
 import { Component, createRef } from "react"
+import { GoogleMapAPIKey } from "../../env";
 import { googleMapsDataType } from "../../types/base.types";
 import styles from './GoogleMap.module.scss';
 
@@ -17,7 +18,7 @@ class GoogleMap extends Component<MyProps> {
     currentCountryData = this.props.centerCountryData;
     componentDidMount() {
         const googleMapScript = document.createElement('script')
-        googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyDAq8ZMvJx0ChDxTD63pq67knmq3qd7cWg`
+        googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key='+GoogleMapAPIKey;
         window.document.body.appendChild(googleMapScript)
     
         googleMapScript.addEventListener('load', ()=>{
@@ -27,13 +28,13 @@ class GoogleMap extends Component<MyProps> {
     }
 
     InitMap = () => {
-      this.borderCountriesData!.map((mapData : googleMapsDataType) => {
+      this.borderCountriesData!.map((mapData : googleMapsDataType, index) => {
         let newMarker = new window.google.maps.Marker({
             position: { lat: mapData.latlng[0], lng: mapData.latlng[1] },
             map: this.googleMap,
           });
         let InfoWindow = new window.google.maps.InfoWindow({
-            content: `<a href="/countries/${mapData.name}">
+            content: `<a key=${index} href="/countries/${mapData.cca2.toLowerCase()}">
             <div className=${styles.InfoWindowContainer}>
                 <img className=${styles.CountryFlag} src="${mapData.flagUri}" alt="${mapData.name}">
                 <h2 className="countryName">${mapData.name}</h2>
@@ -47,6 +48,7 @@ class GoogleMap extends Component<MyProps> {
     }
     createGoogleMap = () => {
       return(
+            // @ts-ignore: Unreachable code error
         new window.google.maps.Map(this.googleMapRef.current, {
           zoom: 3,
           // minZoom: 1,
