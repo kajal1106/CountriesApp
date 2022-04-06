@@ -81,7 +81,7 @@ Note: If you are already running a webserver on port 80 (e.g. Macs usually have 
 
 ## Configuring
 
-If you configure a .env file (just copy [.env.example]() over to '.env' and fill in the options) you can configure a range of options.
+If you configure a .env file (just copy [.env.example](https://github.com/kajal1106/CountriesApp/blob/master/.env.local.example) over to '.env' and fill in the options) you can configure a range of options.
 
 
 ## Testing
