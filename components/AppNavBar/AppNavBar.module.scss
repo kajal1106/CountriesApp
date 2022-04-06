@@ -22,6 +22,7 @@
   padding-top: env(safe-area-inset-top);
   backdrop-filter: blur(2em);
   box-shadow: 0 1em 3em rgb(0 0 0 / 6%);
+  max-width: 160rem;
   @media #{$tablet} {
     padding: 0 1.2em;
   }

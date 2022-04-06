@@ -6,6 +6,9 @@ const nextConfig = {
     domains: ['flagcdn.com', 'upload.wikimedia.org'],
     // formats: ['webp', 'png', 'jpg', 'svg'],
   },
+  env: {
+    GoogleMapAPIKey: process.env.GoogleMapAPIKey
+  }
 }
 
 module.exports = nextConfig

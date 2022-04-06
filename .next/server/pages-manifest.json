@@ -1,10 +1,10 @@
 {
   "/_app": "pages/_app.js",
   "/": "pages/index.html",
-  "/_error": "pages/_error.js",
   "/404": "pages/404.html",
-  "/sitemap.xml": "pages/sitemap.xml.js",
+  "/_error": "pages/_error.js",
   "/countries/[code]": "pages/countries/[code].js",
   "/countries": "pages/countries.js",
+  "/sitemap.xml": "pages/sitemap.xml.js",
   "/_document": "pages/_document.js"
 }

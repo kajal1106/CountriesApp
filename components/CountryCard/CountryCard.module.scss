@@ -16,7 +16,6 @@
   box-shadow: 0 3px 10px 0 rgba(99, 118, 129, 0.3);
   transition: box-shadow 0.25s cubic-bezier(0.32, 0.01, 0, 1);
   box-sizing: border-box;
-  min-height: 20em;
   
   display: flex;
   flex-direction: column;
@@ -32,6 +31,7 @@
     max-width: unset;
   }
   @media #{$tablet} {
+    min-height: 20em;
     max-width: 30rem;
   }
 
@@ -75,23 +75,33 @@
 
 .CountryCardFlag {
   width: 100%;
-  height: 160px !important;
+  // height: 10em;
   overflow: hidden;
   position: relative;
   border-top-left-radius: 3px;
   border-top-right-radius: 3px;
+  @media #{$tablet} {
+    height: 160px !important;
+  }
 
   img {
-    position: absolute;
     width: 100%;
-    height: 160px;
+    height: 100%;
     object-fit: cover;
+    @media #{$tablet} {
+      position: absolute;
+      height: 160px;
+    }
   }
 }
 
 
 .CountryCardInfo {
-  padding: 2em;
+  padding: 1em;
+  @media #{$tablet} {
+    padding: 2em;
+
+  }
 
   .CountryCardInfoHeading {
     display: flex;

@@ -1,5 +1,4 @@
 import { Component, createRef } from "react"
-import { GoogleMapAPIKey } from "../../env";
 import { googleMapsDataType } from "../../types/base.types";
 import styles from './GoogleMap.module.scss';
 
@@ -18,7 +17,7 @@ class GoogleMap extends Component<MyProps> {
     currentCountryData = this.props.centerCountryData;
     componentDidMount() {
         const googleMapScript = document.createElement('script')
-        googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key='+GoogleMapAPIKey;
+        googleMapScript.src = 'https://maps.googleapis.com/maps/api/js?key='+process.env.GoogleMapAPIKey;
         window.document.body.appendChild(googleMapScript)
     
         googleMapScript.addEventListener('load', ()=>{

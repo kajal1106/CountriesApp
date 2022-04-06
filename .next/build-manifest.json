@@ -5,9 +5,9 @@
   "devFiles": [],
   "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/0RbaNuGQrxX3oc59nxWuo/_buildManifest.js",
-    "static/0RbaNuGQrxX3oc59nxWuo/_ssgManifest.js",
-    "static/0RbaNuGQrxX3oc59nxWuo/_middlewareManifest.js"
+    "static/xY1HABxsCQE_sBimF2b1T/_buildManifest.js",
+    "static/xY1HABxsCQE_sBimF2b1T/_ssgManifest.js",
+    "static/xY1HABxsCQE_sBimF2b1T/_middlewareManifest.js"
   ],
   "pages": {
     "/": [
@@ -21,7 +21,7 @@
       "static/chunks/framework-fc97f3f1282ce3ed.js",
       "static/chunks/main-551bef8982a15171.js",
       "static/chunks/914-34463859408b33fe.js",
-      "static/css/02721fe81654bc9a.css",
+      "static/css/5160bb4e26aa0648.css",
       "static/chunks/pages/404-3b7b164b2b397fb4.js"
     ],
     "/_app": [
@@ -42,7 +42,7 @@
       "static/chunks/framework-fc97f3f1282ce3ed.js",
       "static/chunks/main-551bef8982a15171.js",
       "static/chunks/914-34463859408b33fe.js",
-      "static/css/01eb444f9503c47d.css",
+      "static/css/79b5640f88a062ce.css",
       "static/chunks/pages/countries-e2b8c27eeb19f590.js"
     ],
     "/countries/[code]": [
@@ -50,8 +50,8 @@
       "static/chunks/framework-fc97f3f1282ce3ed.js",
       "static/chunks/main-551bef8982a15171.js",
       "static/chunks/914-34463859408b33fe.js",
-      "static/css/922cdb7532459eaf.css",
-      "static/chunks/pages/countries/[code]-ec0ab38f792a9b05.js"
+      "static/css/f453df91c9a28052.css",
+      "static/chunks/pages/countries/[code]-56b3ad2936c2b6df.js"
     ],
     "/sitemap.xml": [
       "static/chunks/webpack-69bfa6990bb9e155.js",
