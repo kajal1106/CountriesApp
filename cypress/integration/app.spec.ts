@@ -1,12 +1,12 @@
 context('Data Table Functionality', () => {
 
-  it.skip('Redirect to /countries route if / is the path', () => {
-    cy.visit(Cypress.env('baseUrl'));
+  it('Redirect to /countries route if / is the path', () => {
+    cy.visit('http://localhost:3000');
     cy.url().should('include','/countries');
   });
 
-  it.skip('Must have data-country Cards after the rendering', () => {
-    cy.visit(Cypress.env('baseUrl'));
+  it('Must have data-country Cards after the rendering', () => {
+    cy.visit('http://localhost:3000/countries');
     cy.get('[data-country]').should('have.length.gt',200);
   });
 
